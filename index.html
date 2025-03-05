@@ -9,12 +9,12 @@
 <body>
 
     <div class="ortho">
-        
+
         <div id="INTRO" class="flex ">
             <img class="screens intro" src="assets/text_intro.png" alt="">
         </div>
-        
-        
+
+
         <div id="GAME" class="flex hidden">
             <img id="screen_lookat" class="screens lookat hidden" src="assets/text_lookat.png" alt="">
             <img id="screen_recenter" class="screens lookat hidden" src="assets/text_recenter.png" alt="">
@@ -26,13 +26,13 @@
                 <span id="steps" class="steps">0</span>
             </div>
         </div>
-        
-        
+
+
         <div id="OUTRO" class="flex hidden">
             <img id="screen_gameover" class="screens gameover" src="assets/text_gameover.png" alt="">
             <span id="steps-outro" class="steps">0 STEPS</span>
         </div>
-        
+
         <img id="mention" src="assets/text_mentions.png" alt="">
         <div class="logs hidden">
             <!-- <div>acc_x <span id="acc_x">0.00</span></div> -->
@@ -79,12 +79,12 @@
         <a-camera></a-camera>
 
         <a-entity id="world">
-            <a-plane id="slack" visible="false" src="#tex_slack" position="0 0 -4" rotation="-90 0 0" scale="0.03 20 1" width="4" height="4"  forward-vector></a-plane>
+            <a-plane id="slack" visible="false" src="#tex_slack" position="0 0 -4" rotation="-90 0 0" scale="0.03 20 1" width="4" height="4" forward-vector></a-plane>
         </a-entity>
-        <a-sky src="#sky-champ-elizee" class="skys" visible="false"></a-sky>
-        <a-sky src="#sky-opera-sidney" class="skys" visible="false"></a-sky>
-        <a-sky src="#sky-empire-state" class="skys" visible="false"></a-sky>
-        
+        <a-sky src="#sky-champ-elizee" class="skys" visible="false" rotation="-2 0 0" animation="property: rotation; to: 2 0 0; dur: 1500; easing: easeInOutSine; loop: true; dir: alternate"></a-sky>
+        <a-sky src="#sky-opera-sidney" class="skys" visible="false" rotation="-2 0 0" animation="property: rotation; to: 2 0 0; dur: 1500; easing: easeInOutSine; loop: true; dir: alternate"></a-sky>
+        <a-sky src="#sky-empire-state" class="skys" visible="false" rotation="-2 0 0" animation="property: rotation; to: 2 0 0; dur: 1500; easing: easeInOutSine; loop: true; dir: alternate"></a-sky>
+
     </a-scene>
 </body>
 

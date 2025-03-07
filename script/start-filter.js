@@ -3,6 +3,7 @@ window.STATE = "INTRO";
 let captureButton = document.getElementById('captureButton');
 document.addEventListener('touchstart', startFilter, false);
 document.addEventListener('click', startFilter, false);
+document.addEventListener('touchstart', loadScript, { once: true });
 
 
 // captureButton.addEventListener("pointerdown", (e) => {
@@ -25,6 +26,9 @@ function startFilter() {
     show('INTRO', false)
     show('GAME', true)
 
+
+    document.getElementById('container-record').style.opacity = 1;
+
     document.getElementById('slack').setAttribute('visible', true)
 
   }
@@ -38,4 +42,12 @@ function show(el, visible) {
   } else {
     elem.classList.add('hidden');
   }
+}
+
+
+
+function loadScript() {
+    const script = document.createElement('script');
+    script.src = "script/resizeSvg.js";
+    document.body.appendChild(script);
 }

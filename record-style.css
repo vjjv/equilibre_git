@@ -27,7 +27,7 @@
     align-items: center;
   }
   
-  .container {
+  .container-record {
     background-color: var(--bg-color);
     --webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-user-select: none;
@@ -41,7 +41,7 @@
   }
   
   @media screen and (max-width: 380px) {
-    .container {
+    .container-record {
       align-items: start;
     }
   }

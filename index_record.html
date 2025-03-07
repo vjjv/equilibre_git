@@ -21,7 +21,8 @@
     <div class="ortho">
 
         <div id="INTRO" class="flex ">
-            <img class="screens intro" src="assets/text_record.png" alt="">
+            <img class="screens intro" src="assets/text_intro.png" alt="" onclick="">
+            <img class="screens intro hidden" src="assets/text_record.png" alt="">
         </div>
 
 
@@ -117,7 +118,7 @@
 
 
     <!-- Preview Section -->
-    <div class="container">
+    <div id="container-record" class="container-record" style="opacity: 0;">
         <section id="preview-part" class="preview-part">
             <img src="assets/spin.gif" alt="loading" class="spin-loading" style="display: none" />
             <div class="preview">
@@ -162,11 +163,11 @@
   </div> -->
 
     <!-- External Scripts -->
+    <script src="script/resizeSvg.js"></script>
     <script src="script/start-filter.js"></script>
     <script src="script/compteur-pas.js"></script>
 
 
-    <script src="script/resizeSvg.js"></script>
     <script src="script/recordAPI.js"></script>
     <script src="script/recordScript.js"></script>
     

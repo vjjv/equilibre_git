@@ -212,6 +212,7 @@ window.addEventListener('load', function () {
     // Stop recording
     function stopRecording() {
       if (recorder && recording) {
+        window.STATE = "OUTRO";
         document.getElementById('video-camera-feed').classList.add('hidden');//baba
         previewPart.style.display = "flex";
         document.getElementById("preview-img").style.display = "none";

@@ -75,6 +75,8 @@ window.addEventListener('load', function () {
       videoElement.muted = true;
       videoElement.autoplay = true; // Autoplay the video
       videoElement.playsInline = true; // Allow inline playback on mobile
+      videoElement.setAttribute('muted', '');
+      videoElement.setAttribute('playsinline', '');
 
       const spinLoading = document.querySelector(".spin-loading");
       spinLoading.style.display = "block";

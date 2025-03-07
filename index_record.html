@@ -1,19 +1,27 @@
 <html>
 
 <head>
-    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-    <script src="script/aframe-extra.min.js"></script>
+    <!-- <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script> -->
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 
+    <script src="script/aframe160.min.js"></script>
+    <script src="script/aframe-extra.min.js"></script>
+    <script src="components/component-forward-vector.js"></script>
+    <script src="components/component-align-world.js"></script>
+    <script src="components/component-camera-feed.js"></script>
+    <!-- <script src="script/aframe-html-shader-baba.js"></script> -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="record-style.css" />
 
 </head>
 
-<body>
+<body style='margin : 0px; overflow: hidden;'>
 
     <div class="ortho">
 
         <div id="INTRO" class="flex ">
-            <img class="screens intro" src="assets/text_intro.png" alt="">
+            <img class="screens intro" src="assets/text_record.png" alt="">
         </div>
 
 
@@ -83,7 +91,7 @@
         <a-camera></a-camera>
 
         <!-- Camera Feed -->
-        <a-entity  camera-feed></a-entity>
+        <a-entity camera-feed></a-entity>
 
         <!-- <a-plane position="0 1.6 -1" scale="0.97 1.67 0" material="shader: html; target: #htmlElement; ratio: height; transparent: true; side: double;"></a-plane> -->
 
@@ -105,12 +113,63 @@
 
     </a-scene>
 
-</body>
 
-<script src="script/start-filter.js"></script>
-<script src="script/compteur-pas.js"></script>
-<script src="components/component-camera-feed.js"></script>
-<script src="components/component-forward-vector.js"></script>
-<script src="components/component-align-world.js"></script>
+
+
+    <!-- Preview Section -->
+    <div class="container">
+        <section id="preview-part" class="preview-part">
+            <img src="assets/spin.gif" alt="loading" class="spin-loading" style="display: none" />
+            <div class="preview">
+                <!-- Video Progress Bar -->
+                <div class="progress-parent">
+                    <div class="video-progress-bar-sudo">
+                        <div class="video-progress-bar" id="videoProgressBar"></div>
+                    </div>
+                </div>
+                <!-- Preview Image or Canvas -->
+                <img src="" alt="Preview Image" id="preview-img" class="preview-img" />
+                <canvas id="videoCanvas" class="video-canvas"></canvas>
+            </div>
+            <!-- Control Bar -->
+            <div class="controls">
+                <!-- Back Button -->
+                <img src="assets/back.png" alt="Back" class="back-btn" id="backButton" />
+                <!-- Action Button will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- Capture Section -->
+        <section class="canvas-part">
+            <!-- Progress Bar -->
+            <div class="progress-bar" id="progressBar"></div>
+            <!-- Canvas -->
+            <canvas id="canvas" class="active"></canvas>
+
+            <!-- Capture Button with SVG -->
+            <div class="capture-btn" id="captureButton">
+                <svg id="progressRing" class="progress-ring" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="outer-circle" stroke="rgba(255, 255, 255,0.9)" stroke-width="3" fill="none" />
+                    <circle class="progress-ring__circle" stroke="rgb(255, 0, 0)" stroke-width="3" fill="none" />
+                    <circle class="inner-circle" fill="rgba(255, 255, 255,0.9)" />
+                </svg>
+            </div>
+        </section>
+    </div>
+
+    <!-- <div class="poweredbysnap-logo">
+    <img id="image" src="./assets/Powered_bysnap.png" alt="Powered by Snap">
+  </div> -->
+
+    <!-- External Scripts -->
+    <script src="script/start-filter.js"></script>
+    <script src="script/compteur-pas.js"></script>
+
+
+    <script src="script/resizeSvg.js"></script>
+    <script src="script/recordAPI.js"></script>
+    <script src="script/recordScript.js"></script>
+    
+</body>
 
 </html>

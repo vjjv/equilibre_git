@@ -1,7 +1,17 @@
 window.STATE = "INTRO";
 
+let captureButton = document.getElementById('captureButton');
 document.addEventListener('touchstart', startFilter, false);
 document.addEventListener('click', startFilter, false);
+
+
+// captureButton.addEventListener("pointerdown", (e) => {
+  // e.preventDefault();
+
+  // setTimeout(() => {
+    // if(window.isRecording) startFilter();
+  // }, 1500); // Hold for 500ms to start video recording
+// });
 
 
 document.getElementsByClassName('skys')[Math.floor(Math.random()*3)].setAttribute('visible', true)

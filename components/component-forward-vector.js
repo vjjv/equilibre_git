@@ -78,8 +78,10 @@ AFRAME.registerComponent('forward-vector', {
     // console.log('Camera Up Vector:', this.cameraUpVector);
 
 
-    this.lookUpDown();
-    this.gradientArrow(angle);
+    if (window.STATE == 'GAME') {
+      this.lookUpDown();
+      this.gradientArrow(angle);
+    }
   },
 
 
@@ -110,13 +112,14 @@ AFRAME.registerComponent('forward-vector', {
 
   lookUpDown: function (treshold) {
     window.isDown = this.cameraUpVector.y < 0.70;
-    this.show(window.step < 5 ? 'screen_lookat':'screen_recenter', !window.isDown);
+    this.show(window.step < 5 ? 'screen_lookat' : 'screen_recenter', !window.isDown);
     this.show('fleche_green', window.isDown);
     this.show('fleche_orange_l', window.isDown);
     this.show('fleche_orange_r', window.isDown);
     this.show('steps', window.isDown);
     this.show('only-down', window.isDown);
-
+    this.show('video-camera-feed', window.isDown);
+    // this.showAFrame('camerafeed', window.isDown)
 
   },
   show: function (el, visible) {
@@ -126,6 +129,11 @@ AFRAME.registerComponent('forward-vector', {
     } else {
       elem.classList.add('hidden');
     }
+  },
+  showAFrame: function (el, visible) {
+    console.log('showAframe ' + el + visible)
+    let elem = document.getElementById(el);
+    elem.setAttribute('visible', visible);
   },
 
   gradientArrow: function (angle) {
@@ -139,8 +147,9 @@ AFRAME.registerComponent('forward-vector', {
   },
 
   gameover: function () {
-    document.getElementById('steps-outro').textContent = ''+step+' STEPS';
+    document.getElementById('steps-outro').textContent = '' + step + ' STEPS';
     window.STATE = "OUTRO";
+    this.show('video-camera-feed', false)
     this.show('INTRO', false)
     this.show('GAME', false)
     this.show('OUTRO', true)

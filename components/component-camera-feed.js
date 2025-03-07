@@ -18,7 +18,7 @@ AFRAME.registerComponent('camera-feed', {
         video.style.width = '100%';
         video.style.height = '100%';
         video.style.objectFit = 'cover';
-        video.style.zIndex = '3';
+        video.style.zIndex = '0';
         video.style.opacity = '0.9';
         video.style.pointerEvents = 'none';
 

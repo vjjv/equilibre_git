@@ -212,6 +212,7 @@ window.addEventListener('load', function () {
     // Stop recording
     function stopRecording() {
       if (recorder && recording) {
+        document.getElementById('video-camera-feed').classList.add('hidden');//baba
         previewPart.style.display = "flex";
         document.getElementById("preview-img").style.display = "none";
         canvas.style.display = "none"; //baba
@@ -623,6 +624,7 @@ window.addEventListener('load', function () {
       canvasPart.style.display = "block";
       canvas.style.display = "block"; //baba
       ortho.style.display = "flex"; //baba
+      document.getElementById('video-camera-feed').classList.remove('hidden');//baba
       videoIsDisplayed = false;
       clearInterval(videoPlayInterval);
       setTimeout(() => {

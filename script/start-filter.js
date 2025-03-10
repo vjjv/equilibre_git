@@ -27,10 +27,10 @@ function startFilter() {
     show('GAME', true)
 
 
-    document.getElementById('container-record').style.opacity = 1;
-
+    
     document.getElementById('slack').setAttribute('visible', true)
-
+    
+    if(document.getElementById('container-record')) document.getElementById('container-record').style.opacity = 1;
   }
 }
 

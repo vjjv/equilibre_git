@@ -1,28 +1,32 @@
 <html>
 
 <head>
-    <!-- <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script> -->
+    <!-- <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script> -->
 
     <script src="script/aframe160.min.js"></script>
     <script src="script/aframe-extra.min.js"></script>
     <script src="script/html2canvas.min.js"></script>
+    <script src="components/component-forward-vector.js"></script>
+    <script src="components/component-align-world.js"></script>
+    <script src="components/component-camera-feed.js"></script>
 
-    <!-- <script src="script/aframe-html-shader-baba.js"></script> -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="record-style.css" />
 
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
-    
+
     <div id="popup-bg" class="flex">
         <div id="popup" class="flex">
             <img src="assets/popup.jpeg" alt=""></img>
             <button id="popup-btn">ALLOW</button>
         </div>
     </div>
-    
+
     <div id="ortho" class="ortho">
 
 
@@ -52,29 +56,6 @@
         </div>
 
         <img id="mention" src="assets/text_mentions.png" alt="">
-        <div class="logs hidden">
-            <!-- <div>acc_x <span id="acc_x">0.00</span></div> -->
-            <!-- <div>acc_y <span id="acc_y">0.00</span></div> -->
-            <!-- <div>acc_z <span id="acc_z">0.00</span></div> -->
-            <!-- <br> -->
-            <!-- <div>agr_x <span id="agr_x">0.00</span></div> -->
-            <!-- <div>agr_y <span id="agr_y">0.00</span></div> -->
-            <!-- <div>agr_z <span id="agr_z">0.00</span></div> -->
-            <!-- <br> -->
-            <div>rot_x <span id="rot_x">0.00</span></div>
-            <div>rot_y <span id="rot_y">0.00</span></div>
-            <div>rot_z <span id="rot_z">0.00</span></div>
-            <!-- <br> -->
-            <!-- <div>agrY0 <span id="agrY0">0.00</span></div> -->
-            <!-- <div>agrY1 <span id="agrY1">0.00</span></div> -->
-            <!-- <div>diff <span id="diff">0.00</span></div> -->
-            <!-- <div> <span id="dirVec"></span></div> -->
-            <!-- <div> <span id="upVec"></span></div> -->
-            <div> <span id="dirVecCam"></span></div>
-            <div> <span id="upVecCam"></span></div>
-            <div> <span id="angleXZ"></span></div>
-            <div>step <span id="step">0.00</span></div>
-        </div>
     </div>
 
 
@@ -99,9 +80,8 @@
         <a-camera></a-camera>
 
         <!-- Camera Feed -->
-        <!-- <a-entity camera-feed></a-entity> -->
+        <!-- <a-entity camera-feed></a-entity> //added in script to trigger camera access after popup -->
 
-        <!-- <a-plane position="0 1.6 -1" scale="0.97 1.67 0" material="shader: html; target: #htmlElement; ratio: height; transparent: true; side: double;"></a-plane> -->
 
         <a-entity id="world">
             <a-plane id="slack" visible="false" src="#tex_slack" position="0 0 -4" rotation="-90 0 0" scale="0.03 20 1" width="4" height="4" forward-vector></a-plane>
@@ -117,10 +97,15 @@
         </a-entity>
 
     </a-scene>
+    <!-- ------------------ -->
+    <!-- ------------------ -->
+    <!------END A-FRAME --------->
+    <!-- ------------------ -->
+    <!-- ------------------ -->
 
 
 
-
+    <!-- RECORD -->
     <!-- Preview Section -->
     <div id="container-record" class="container-record " style="opacity: 0;">
         <section id="preview-part" class="preview-part">
@@ -163,82 +148,14 @@
     </div>
 
 
-    <!-- <button id="captureBtn" style="position: absolute;z-index: 3;top: 0;">Export as Image2</button> -->
-
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script>
-
-        //     // Enable the button after the scene is loaded
-        //     document.getElementById('captureBtn').addEventListener('click', captureAll);
 
 
-        //     async function captureAll() {
-        //         let screenshot = document.querySelector('a-scene').components.screenshot
-        //         screenshot.data.width = window.innerWidth;
-        //         screenshot.data.height = window.innerHeight;
-        //         let canvasGL = screenshot.getCanvas('perspective')
-        //         let canvasDom = await html2canvas(document.body, { width: 1201, height: 1192, backgroundColor: null, scale: 1 });
-        //         mergeImages(canvasGL.toDataURL(), canvasDom.toDataURL());
-        //     }
-
-        //     // Helper function to download the image
-        //     function downloadImage(dataUrl, fileName) {
-        //         const link = document.createElement("a");
-        //         link.href = dataUrl;
-        //         link.download = fileName;
-        //         link.click();
-        //     }
-        //     function mergeImages(dataUrl1, dataUrl2) {
-        //         // Create a canvas element dynamically
-        //         const canvas = document.createElement('canvas');
-        //         const context = canvas.getContext('2d');
-
-        //         // Create image objects
-        //         const drawing1 = new Image();
-        //         drawing1.src = dataUrl1;
-        //         const drawing2 = new Image();
-        //         drawing2.src = dataUrl2;
-
-        //         // Wait for both images to load before drawing
-        //         let imagesLoaded = 0;
-        //         function checkImagesLoaded() {
-        //             imagesLoaded++;
-        //             if (imagesLoaded === 2) {
-        //                 // Set canvas size to match the first image (or adjust as needed)
-        //                 canvas.width = window.innerWidth;
-        //                 canvas.height = window.innerHeight;
-
-        //                 // Draw both images onto the canvas
-        //                 context.drawImage(drawing1, 0, 0);
-        //                 context.drawImage(drawing2, 0, 0);
-
-        //                 // Automatically download the merged image
-        //                 const mergedImage = canvas.toDataURL("image/png");
-        //                 const link = document.createElement('a');
-        //                 link.href = mergedImage;
-        //                 link.download = 'merged-image.png';
-        //                 link.click();
-        //             }
-        //         }
-
-        //         // Load event listeners for both images
-        //         drawing1.onload = checkImagesLoaded;
-        //         drawing2.onload = checkImagesLoaded;
-        //     }
-        // </script>
-
-
-    <!-- External Scripts -->
     <script src="script/resizeSvg.js"></script>
     <script src="script/start-filter.js"></script>
     <script src="script/compteur-pas.js"></script>
-
-
     <script src="script/recordAPI.js"></script>
     <script src="script/recordScript.js"></script>
-    <script src="components/component-forward-vector.js"></script>
-    <script src="components/component-align-world.js"></script>
-    <script src="components/component-camera-feed.js"></script>
+
 
 </body>
 

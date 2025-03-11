@@ -19,6 +19,8 @@ document.getElementsByClassName('skys')[Math.floor(Math.random() * 3)].setAttrib
 
 function startFilter() {
   if (window.STATE == "INTRO") {
+
+    DeviceMotionEvent.requestPermission()
     console.log('StartFiter');
     window.STATE = "GAME";
     console.log(window.STATE);
@@ -35,17 +37,17 @@ function startFilter() {
 
     // captueereFullPage();
 
-  //   const node = document.getElementsByClassName('ortho')[0];
-  //   domtoimage.toPng(node)
-  //     .then((dataUrl) => {
-  //       const img = new Image();
-  //       img.src = dataUrl;
-  //       downloadImage(dataUrl, 'coucou.png');
-  //       document.body.appendChild(img);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Something went wrong!', error);
-  //     });
+    //   const node = document.getElementsByClassName('ortho')[0];
+    //   domtoimage.toPng(node)
+    //     .then((dataUrl) => {
+    //       const img = new Image();
+    //       img.src = dataUrl;
+    //       downloadImage(dataUrl, 'coucou.png');
+    //       document.body.appendChild(img);
+    //     })
+    //     .catch((error) => {
+    //       console.error('Something went wrong!', error);
+    //     });
 
 
   }

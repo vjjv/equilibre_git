@@ -26,7 +26,7 @@ document.getElementById('popup-btn').addEventListener('click', async () => {
           console.log('Acceleration:', event.acceleration);
           console.log('Rotation rate:', event.rotationRate);
         });
-
+        window.filterStarted = true;
         document.addEventListener('touchstart', startFilter, false);
         document.addEventListener('click', startFilter, false);
       } else {

@@ -50,5 +50,9 @@ AFRAME.registerComponent('camera-feed', {
                 console.error('Error accessing camera:', err);
             });
         // }
+    },
+     thick: function(){
+        console.log('camera-feed thick');
+        
     }
 });

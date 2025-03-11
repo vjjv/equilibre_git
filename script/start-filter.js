@@ -11,6 +11,7 @@ let captureButton = document.getElementById('captureButton');
 // if(window.isRecording) startFilter();
 // }, 1500); // Hold for 500ms to start video recording
 // });
+window.filterStarted = false;
 
 document.getElementById('popup-btn').addEventListener('click', async () => {
   // Check if the DeviceMotionEvent.requestPermission API exists
@@ -21,24 +22,39 @@ document.getElementById('popup-btn').addEventListener('click', async () => {
       if (permissionState === 'granted') {
         console.log('Device motion access granted!');
         // Add event listener for device motion
+        // window.addEventListener('devicemotion', (event) => {
+        //   console.log('Acceleration:', event.acceleration);
+        //   console.log('Rotation rate:', event.rotationRate);
+        // });
         document.getElementById('popup-bg').style.display = 'none';
-        window.addEventListener('devicemotion', (event) => {
-          console.log('Acceleration:', event.acceleration);
-          console.log('Rotation rate:', event.rotationRate);
-        });
-        window.filterStarted = true;
-        document.addEventListener('touchstart', startFilter, false);
-        document.addEventListener('click', startFilter, false);
+        document.addEventListener('touchstart', startFilter, true);
+        document.addEventListener('click', startFilter, true);
       } else {
         console.warn('Device motion access denied.');
       }
     } catch (error) {
       console.error('Error requesting device motion permission:', error);
       document.getElementById('popup-bg').style.display = 'none';
+      document.addEventListener('touchstart', startFilter, true);
+      document.addEventListener('click', startFilter, true);
     }
   } else {
     console.log('DeviceMotionEvent.requestPermission is not supported on this device.');
     document.getElementById('popup-bg').style.display = 'none';
+    document.addEventListener('touchstart', startFilter, true);
+    document.addEventListener('click', startFilter, true);
+    navigator.mediaDevices.getUserMedia({
+      video: {
+          facingMode: 'environment'
+      },
+      audio: false
+  })
+      .then(function (stream) {
+          window.stream = stream;
+      })
+      .catch(function (err) {
+          console.error('Error accessing camera:', err);
+      });
   }
 });
 
@@ -46,8 +62,11 @@ document.getElementById('popup-btn').addEventListener('click', async () => {
 document.getElementsByClassName('skys')[Math.floor(Math.random() * 3)].setAttribute('visible', true)
 
 function startFilter() {
+  console.log('STARTFILTER()');
+
   if (window.STATE == "INTRO") {
 
+    window.filterStarted = true;
     console.log('StartFiter');
     window.STATE = "GAME";
     console.log(window.STATE);

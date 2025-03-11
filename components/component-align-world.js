@@ -24,6 +24,8 @@ AFRAME.registerComponent('align-world', {
   },
 
   onTap: function (event) {
+    console.log('align world ONTAPPPP' + window.filterStarted);
+    
     if (window.filterStarted && !this.isPlaced) {
 
       this.isPlaced = true;

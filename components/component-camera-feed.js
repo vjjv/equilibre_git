@@ -10,7 +10,7 @@ AFRAME.registerComponent('camera-feed', {
         video.setAttribute('autoplay', '');
         video.setAttribute('muted', '');
         video.setAttribute('playsinline', '');
-        video.setAttribute('id','video-camera-feed');
+        video.setAttribute('id', 'video-camera-feed');
 
         video.style.position = 'fixed';
         video.style.top = '0';
@@ -37,22 +37,22 @@ AFRAME.registerComponent('camera-feed', {
 
         document.body.appendChild(video);
 
-        navigator.mediaDevices.getUserMedia({
-            video: {
-                facingMode: 'environment'
-            },
-            audio: false
-        })
-            .then(function (stream) {
-                video.srcObject = stream;
-            })
-            .catch(function (err) {
-                console.error('Error accessing camera:', err);
-            });
+        // navigator.mediaDevices.getUserMedia({
+        //     video: {
+        //         facingMode: 'environment'
+        //     },
+        //     audio: false
+        // })
+        //     .then(function (stream) {
+                video.srcObject = window.stream;
+        //     })
+        //     .catch(function (err) {
+        //         console.error('Error accessing camera:', err);
+        //     });
         // }
     },
-     thick: function(){
-        console.log('camera-feed thick');
-        
+    tick: function () {
+        // console.log('camera-feed tick');
+
     }
 });

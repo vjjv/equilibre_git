@@ -9,7 +9,7 @@ window.addEventListener('load', function () {
     const ortho = document.getElementsByClassName("ortho")[0];
     canvas.style.display = 'block';
     canvas.style.position = 'absolute';
-    canvas.style.zIndex='0';
+    canvas.style.zIndex = '0';
     document.querySelector('a-scene').style.position = 'absolute';
     // const canvas = document.querySelector('.canvas-part canvas');
     // const ctx = canvas.getContext("2d");
@@ -574,7 +574,7 @@ window.addEventListener('load', function () {
         updateActionButtonLabel("video");
       }
       if (!recording && !videoIsDisplayed) {
-        // capturePhoto(); //baba disable photo
+        capturePhoto(); //baba disable photo
       }
     });
 
@@ -598,9 +598,11 @@ window.addEventListener('load', function () {
     }
 
     // Capture Photo
-    function capturePhoto() {
+    async function capturePhoto() {
+      document.getElementById('ortho').style.display = 'none';
       const img = document.getElementById("preview-img");
-      const image = canvas.toDataURL("image/png");
+      // const image = canvas.toDataURL("image/png");
+      const image = await captureAll();
       img.src = image;
       img.style.display = "block";
 
@@ -616,6 +618,65 @@ window.addEventListener('load', function () {
       canvasPart.style.display = "none";
 
       updateActionButtonLabel("image");
+    }
+
+
+    // Capture All : DOM + GL
+    async function captureAll() {
+      let screenshot = document.querySelector('a-scene').components.screenshot;
+      screenshot.data.width = window.innerWidth;
+      screenshot.data.height = window.innerHeight;
+      let canvasGL = screenshot.getCanvas('perspective');
+      let canvasDom = await html2canvas(document.body, {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        backgroundColor: null,
+        scale: 1
+      });
+
+      // Wait for the merged image and return it
+      return await mergeImages(canvasGL.toDataURL(), canvasDom.toDataURL());
+    }
+
+
+    // Helper function to download the image
+    function downloadImage(dataUrl, fileName) {
+      const link = document.createElement("a");
+      link.href = dataUrl;
+      link.download = fileName;
+      link.click();
+    }
+    function mergeImages(dataUrl1, dataUrl2) {
+      return new Promise((resolve) => {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+
+        const drawing1 = new Image();
+        const drawing2 = new Image();
+
+        let imagesLoaded = 0;
+
+        function checkImagesLoaded() {
+          imagesLoaded++;
+          if (imagesLoaded === 2) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            context.drawImage(drawing1, 0, 0);
+            context.drawImage(drawing2, 0, 0);
+
+            const mergedImage = canvas.toDataURL("image/png");
+            window.photo = mergedImage;
+            resolve(mergedImage);  // Resolve the promise with the merged image
+          }
+        }
+
+        drawing1.onload = checkImagesLoaded;
+        drawing2.onload = checkImagesLoaded;
+
+        drawing1.src = dataUrl1;
+        drawing2.src = dataUrl2;
+      });
     }
 
     // Back Button Handling

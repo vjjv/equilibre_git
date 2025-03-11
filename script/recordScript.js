@@ -559,7 +559,7 @@ window.addEventListener('load', function () {
       e.preventDefault();
 
       holdTimeout = setTimeout(() => {
-        startRecording();
+        // startRecording(); // baba remove recording function
       }, 500); // Hold for 500ms to start video recording
     });
 
@@ -627,7 +627,8 @@ window.addEventListener('load', function () {
       screenshot.data.width = window.innerWidth;
       screenshot.data.height = window.innerHeight;
       let canvasGL = screenshot.getCanvas('perspective');
-      let canvasDom = await html2canvas(document.body, {
+      // let canvasDom = await html2canvas(document.body, {
+      let canvasDom = await html2canvas(document.getElementById('ortho'), {
         width: window.innerWidth,
         height: window.innerHeight,
         backgroundColor: null,

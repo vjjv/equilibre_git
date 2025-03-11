@@ -1,0 +1,211 @@
+<html>
+
+<head>
+    <!-- <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script> -->
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+
+    <script src="script/aframe160.min.js"></script>
+    <script src="script/aframe-extra.min.js"></script>
+    <script src="components/component-forward-vector.js"></script>
+    <script src="components/component-align-world.js"></script>
+    <script src="components/component-camera-feed.js"></script>
+    <!-- <script src="script/aframe-html-shader-baba.js"></script> -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="record-style.css" />
+
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+
+    <div class="ortho">
+
+        <div id="INTRO" class="flex ">
+            <img class="screens intro" src="assets/text_intro.png" alt="" onclick="">
+            <img class="screens intro hidden" src="assets/text_record.png" alt="">
+        </div>
+
+
+        <div id="GAME" class="flex hidden">
+            <img id="screen_lookat" class="screens lookat hidden" src="assets/text_lookat.png" alt="">
+            <img id="screen_recenter" class="screens lookat hidden" src="assets/text_recenter.png" alt="">
+            <div id="only-down" class="flex hidden">
+                <img id="screen_missed" class="screens missed hidden" src="assets/text_missed.png" alt="">
+                <img id="fleche_green" class="fleches" src="assets/fleche_green.png" alt="">
+                <img id="fleche_orange_l" class="fleches" src="assets/fleche_orange_l.png" alt="">
+                <img id="fleche_orange_r" class="fleches" src="assets/fleche_orange_r.png" alt="">
+                <span id="steps" class="steps">0</span>
+            </div>
+        </div>
+
+
+        <div id="OUTRO" class="flex hidden">
+            <img id="screen_gameover" class="screens gameover" src="assets/text_gameover.png" alt="">
+            <span id="steps-outro" class="steps">0 STEPS</span>
+        </div>
+
+        <img id="mention" src="assets/text_mentions.png" alt="">
+        <div class="logs hidden">
+            <!-- <div>acc_x <span id="acc_x">0.00</span></div> -->
+            <!-- <div>acc_y <span id="acc_y">0.00</span></div> -->
+            <!-- <div>acc_z <span id="acc_z">0.00</span></div> -->
+            <!-- <br> -->
+            <!-- <div>agr_x <span id="agr_x">0.00</span></div> -->
+            <!-- <div>agr_y <span id="agr_y">0.00</span></div> -->
+            <!-- <div>agr_z <span id="agr_z">0.00</span></div> -->
+            <!-- <br> -->
+            <div>rot_x <span id="rot_x">0.00</span></div>
+            <div>rot_y <span id="rot_y">0.00</span></div>
+            <div>rot_z <span id="rot_z">0.00</span></div>
+            <!-- <br> -->
+            <!-- <div>agrY0 <span id="agrY0">0.00</span></div> -->
+            <!-- <div>agrY1 <span id="agrY1">0.00</span></div> -->
+            <!-- <div>diff <span id="diff">0.00</span></div> -->
+            <!-- <div> <span id="dirVec"></span></div> -->
+            <!-- <div> <span id="upVec"></span></div> -->
+            <div> <span id="dirVecCam"></span></div>
+            <div> <span id="upVecCam"></span></div>
+            <div> <span id="angleXZ"></span></div>
+            <div>step <span id="step">0.00</span></div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- ------------------ -->
+    <!-- ------------------ -->
+    <!------ A-FRAME --------->
+    <!-- ------------------ -->
+    <!-- ------------------ -->
+    <a-scene device-orientation-permission-ui="enabled: true" debug="true" align-world>
+        <a-assets>
+            <img id="sky-champ-elizee" src="assets/champ-elizee.jpg">
+            <img id="sky-opera-sidney" src="assets/opera-sidney.jpg">
+            <img id="sky-empire-state" src="assets/empire-state.jpg">
+            <img id="tex_slack" src="assets/slack.png">
+            <img id="mask" src="assets/mask.png">
+            <a-asset-item id="birds" src="assets/birds.glb"></a-asset-item>
+        </a-assets>
+        <a-camera></a-camera>
+
+        <!-- Camera Feed -->
+        <a-entity camera-feed></a-entity>
+
+        <!-- <a-plane position="0 1.6 -1" scale="0.97 1.67 0" material="shader: html; target: #htmlElement; ratio: height; transparent: true; side: double;"></a-plane> -->
+
+        <a-entity id="world">
+            <a-plane id="slack" visible="false" src="#tex_slack" position="0 0 -4" rotation="-90 0 0" scale="0.03 20 1"
+                width="4" height="4" forward-vector></a-plane>
+        </a-entity>
+        <a-entity rotation="-2 0 0" position="0 0 -3"
+            animation="property: rotation; to: 2 0 0; dur: 1500; easing: easeInOutSine; loop: true; dir: alternate">
+            <a-entity animation="property: rotation; to: 0 359 0; dur: 5000; easing: linear; loop: true; ">
+                <a-entity gltf-model="#birds" scale="1 1 1" rotation="0 90 0" position="0 -3 -5"
+                    animation-mixer></a-entity>
+            </a-entity>
+            <a-sky src="#sky-champ-elizee" class="skys" visible="false"></a-sky>
+            <a-sky src="#sky-opera-sidney" class="skys" visible="false"></a-sky>
+            <a-sky src="#sky-empire-state" class="skys" visible="false"></a-sky>
+
+        </a-entity>
+
+    </a-scene>
+
+
+
+
+    <!-- Preview Section -->
+    <div id="container-record" class="container-record" style="opacity: 0;">
+        <section id="preview-part" class="preview-part">
+            <img src="assets/spin.gif" alt="loading" class="spin-loading" style="display: none" />
+            <div class="preview">
+                <!-- Video Progress Bar -->
+                <div class="progress-parent">
+                    <div class="video-progress-bar-sudo">
+                        <div class="video-progress-bar" id="videoProgressBar"></div>
+                    </div>
+                </div>
+                <!-- Preview Image or Canvas -->
+                <img src="" alt="Preview Image" id="preview-img" class="preview-img" />
+                <canvas id="videoCanvas" class="video-canvas"></canvas>
+            </div>
+            <!-- Control Bar -->
+            <div class="controls">
+                <!-- Back Button -->
+                <img src="assets/back.png" alt="Back" class="back-btn" id="backButton" />
+                <!-- Action Button will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- Capture Section -->
+        <section class="canvas-part">
+            <!-- Progress Bar -->
+            <div class="progress-bar" id="progressBar"></div>
+            <!-- Canvas -->
+            <canvas id="canvas" class="active"></canvas>
+
+            <!-- Capture Button with SVG -->
+            <div class="capture-btn" id="captureButton">
+                <svg id="progressRing" class="progress-ring" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="outer-circle" stroke="rgba(255, 255, 255,0.9)" stroke-width="3" fill="none" />
+                    <circle class="progress-ring__circle" stroke="rgb(255, 0, 0)" stroke-width="3" fill="none" />
+                    <circle class="inner-circle" fill="rgba(255, 255, 255,0.9)" />
+                </svg>
+            </div>
+        </section>
+    </div>
+
+    <!-- <div class="poweredbysnap-logo">
+    <img id="image" src="./assets/Powered_bysnap.png" alt="Powered by Snap">
+  </div> -->
+
+    <!-- External Scripts -->
+    <script src="script/resizeSvg.js"></script>
+    <script src="script/start-filter.js"></script>
+    <script src="script/compteur-pas.js"></script>
+
+
+    <script src="script/recordAPI.js"></script>
+    <script src="script/recordScript.js"></script>
+
+
+
+    <button id="captureBtn" style="position: absolute;z-index: 3;top: 0;">Export as Image2</button>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+        document.querySelector('a-scene').addEventListener('loaded', function () {
+            console.log('A-Frame scene has finished loading');
+
+            // Enable the button after the scene is loaded
+            document.getElementById('captureBtn').addEventListener('click', exportBodyAsImage);
+        });
+
+        function exportBodyAsImage() {
+            document.querySelector('a-scene').components.screenshot.capture('perspective')
+            // var dataUrl = document.querySelector('a-scene').renderer.domElement.toDataURL()
+            // downloadImage(dataUrl, 'couciu.png');
+            //   html2canvas(document.body).then(canvas => {
+            //     const link = document.createElement('a');
+            //     link.download = 'aframe-screenshot.png';
+            //     link.href = canvas.toDataURL();
+            //     link.click();
+            //   });
+        }
+
+        // Helper function to download the image
+        function downloadImage(dataUrl, fileName) {
+            const link = document.createElement("a");
+            link.href = dataUrl;
+            link.download = fileName;
+            link.click();
+        }
+    </script>
+
+    
+</body>
+
+</html>

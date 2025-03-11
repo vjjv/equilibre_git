@@ -26,6 +26,21 @@ document.getElementById('popup-btn').addEventListener('click', async () => {
         //   console.log('Acceleration:', event.acceleration);
         //   console.log('Rotation rate:', event.rotationRate);
         // });
+
+        navigator.mediaDevices.getUserMedia({
+          video: {
+            facingMode: 'environment'
+          },
+          audio: false
+        })
+          .then(function (stream) {
+            window.stream = stream;
+          })
+          .catch(function (err) {
+            console.error('Error accessing camera:', err);
+          });
+
+
         document.getElementById('popup-bg').style.display = 'none';
         document.addEventListener('touchstart', startFilter, true);
         document.addEventListener('click', startFilter, true);
@@ -45,15 +60,15 @@ document.getElementById('popup-btn').addEventListener('click', async () => {
     document.addEventListener('click', startFilter, true);
     navigator.mediaDevices.getUserMedia({
       video: {
-          facingMode: 'environment'
+        facingMode: 'environment'
       },
       audio: false
-  })
+    })
       .then(function (stream) {
-          window.stream = stream;
+        window.stream = stream;
       })
       .catch(function (err) {
-          console.error('Error accessing camera:', err);
+        console.error('Error accessing camera:', err);
       });
   }
 });

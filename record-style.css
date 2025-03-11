@@ -28,8 +28,8 @@
   }
   
   .container-record {
-    background-color: var(--bg-color);
-    --webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    /* background-color: var(--bg-color); */
+    /* --webkit-tap-highlight-color: rgba(0, 0, 0, 0); */
     -webkit-user-select: none;
     user-select: none;
     display: flex;

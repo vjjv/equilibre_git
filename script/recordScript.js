@@ -599,10 +599,10 @@ window.addEventListener('load', function () {
 
     // Capture Photo
     async function capturePhoto() {
-      document.getElementById('ortho').style.display = 'none';
       const img = document.getElementById("preview-img");
       // const image = canvas.toDataURL("image/png");
       const image = await captureAll();
+      document.getElementById('ortho').style.display = 'none';
       img.src = image;
       img.style.display = "block";
 

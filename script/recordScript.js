@@ -602,7 +602,7 @@ window.addEventListener('load', function () {
       const img = document.getElementById("preview-img");
       // const image = canvas.toDataURL("image/png");
       const image = await captureAll();
-      document.getElementById('ortho').style.display = 'none';
+      showDomCapture(false);
       img.src = image;
       img.style.display = "block";
 
@@ -618,6 +618,10 @@ window.addEventListener('load', function () {
       canvasPart.style.display = "none";
 
       updateActionButtonLabel("image");
+    }
+    function showDomCapture(visible) {
+      document.getElementById('ortho').style.display = visible ? 'flex' : 'none';
+      document.getElementById('video-camera-feed').style.display = visible ? 'block': 'none';
     }
 
 
@@ -682,6 +686,7 @@ window.addEventListener('load', function () {
 
     // Back Button Handling
     backButton.addEventListener("click", () => {
+      showDomCapture(true);//baba
       previewPart.style.scale = 1.3;
       previewPart.style.display = "none";
       canvasPart.style.display = "block";

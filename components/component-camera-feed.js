@@ -37,18 +37,18 @@ AFRAME.registerComponent('camera-feed', {
 
         document.body.appendChild(video);
 
-        // navigator.mediaDevices.getUserMedia({
-        //     video: {
-        //         facingMode: 'environment'
-        //     },
-        //     audio: false
-        // })
-        //     .then(function (stream) {
-                video.srcObject = window.stream;
-        //     })
-        //     .catch(function (err) {
-        //         console.error('Error accessing camera:', err);
-        //     });
+        navigator.mediaDevices.getUserMedia({
+            video: {
+                facingMode: 'environment'
+            },
+            audio: false
+        })
+            .then(function (stream) {
+                video.srcObject = stream;
+            })
+            .catch(function (err) {
+                console.error('Error accessing camera:', err);
+            });
         // }
     },
     tick: function () {

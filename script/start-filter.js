@@ -17,10 +17,31 @@ document.addEventListener('touchstart', loadScript, { once: true });
 
 document.getElementsByClassName('skys')[Math.floor(Math.random() * 3)].setAttribute('visible', true)
 
-function startFilter() {
+async function startFilter() {
   if (window.STATE == "INTRO") {
 
-    DeviceMotionEvent.requestPermission()
+    // Check if the DeviceMotionEvent.requestPermission API exists
+    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+      try {
+        // Request permission
+        const permissionState = await DeviceMotionEvent.requestPermission();
+        if (permissionState === 'granted') {
+          console.log('Device motion access granted!');
+          // Add event listener for device motion
+          window.addEventListener('devicemotion', (event) => {
+            console.log('Acceleration:', event.acceleration);
+            console.log('Rotation rate:', event.rotationRate);
+          });
+        } else {
+          console.warn('Device motion access denied.');
+        }
+      } catch (error) {
+        console.error('Error requesting device motion permission:', error);
+      }
+    } else {
+      console.log('DeviceMotionEvent.requestPermission is not supported on this device.');
+    }
+
     console.log('StartFiter');
     window.STATE = "GAME";
     console.log(window.STATE);

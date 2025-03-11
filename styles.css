@@ -88,7 +88,7 @@
 }
 
 #popup {
-    width: 80%;
+    width: 87%;
     position: absolute;
     z-index: 3;
 }
@@ -109,4 +109,19 @@
     border-color: #818181;
     padding: 0;
     border: none;
+}
+#policy{
+    width: 50%;
+    position: absolute;
+    top:70%;
+    background-color: #1E1E1E;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    border-color: white;
+    border : 2px solid;
+    padding: 10px;
+}
+a{
+    color: white;
 }

@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 
 .logs {
@@ -124,4 +124,14 @@
 }
 a{
     color: white;
+}
+
+#INTRO{
+    pointer-events: none;
+}
+#GAME{
+    pointer-events: none;
+}
+#OUTRO{
+    pointer-events: auto;
 }

@@ -17,8 +17,16 @@
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
-
+    
+    <div id="popup-bg" class="flex">
+        <div id="popup" class="flex">
+            <img src="assets/popup.jpeg" alt=""></img>
+            <button id="popup-btn">ALLOW</button>
+        </div>
+    </div>
+    
     <div id="ortho" class="ortho">
+
 
         <div id="INTRO" class="flex ">
             <img class="screens intro" src="assets/text_intro.png" alt="" onclick="">
@@ -145,7 +153,7 @@
             <!-- <canvas id="canvas" class="active"></canvas> -->
 
             <!-- Capture Button with SVG -->
-            <div  id="captureButton" class="capture-btn">
+            <div id="captureButton" class="capture-btn">
                 <svg id="progressRing" class="progress-ring" xmlns="http://www.w3.org/2000/svg">
                     <circle class="outer-circle" stroke="rgba(255, 255, 255,0.9)" stroke-width="3" fill="none" />
                     <circle class="progress-ring__circle" stroke="rgb(255, 0, 0)" stroke-width="3" fill="none" />
@@ -161,64 +169,64 @@
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script>
 
-    //     // Enable the button after the scene is loaded
-    //     document.getElementById('captureBtn').addEventListener('click', captureAll);
+        //     // Enable the button after the scene is loaded
+        //     document.getElementById('captureBtn').addEventListener('click', captureAll);
 
 
-    //     async function captureAll() {
-    //         let screenshot = document.querySelector('a-scene').components.screenshot
-    //         screenshot.data.width = window.innerWidth;
-    //         screenshot.data.height = window.innerHeight;
-    //         let canvasGL = screenshot.getCanvas('perspective')
-    //         let canvasDom = await html2canvas(document.body, { width: 1201, height: 1192, backgroundColor: null, scale: 1 });
-    //         mergeImages(canvasGL.toDataURL(), canvasDom.toDataURL());
-    //     }
+        //     async function captureAll() {
+        //         let screenshot = document.querySelector('a-scene').components.screenshot
+        //         screenshot.data.width = window.innerWidth;
+        //         screenshot.data.height = window.innerHeight;
+        //         let canvasGL = screenshot.getCanvas('perspective')
+        //         let canvasDom = await html2canvas(document.body, { width: 1201, height: 1192, backgroundColor: null, scale: 1 });
+        //         mergeImages(canvasGL.toDataURL(), canvasDom.toDataURL());
+        //     }
 
-    //     // Helper function to download the image
-    //     function downloadImage(dataUrl, fileName) {
-    //         const link = document.createElement("a");
-    //         link.href = dataUrl;
-    //         link.download = fileName;
-    //         link.click();
-    //     }
-    //     function mergeImages(dataUrl1, dataUrl2) {
-    //         // Create a canvas element dynamically
-    //         const canvas = document.createElement('canvas');
-    //         const context = canvas.getContext('2d');
+        //     // Helper function to download the image
+        //     function downloadImage(dataUrl, fileName) {
+        //         const link = document.createElement("a");
+        //         link.href = dataUrl;
+        //         link.download = fileName;
+        //         link.click();
+        //     }
+        //     function mergeImages(dataUrl1, dataUrl2) {
+        //         // Create a canvas element dynamically
+        //         const canvas = document.createElement('canvas');
+        //         const context = canvas.getContext('2d');
 
-    //         // Create image objects
-    //         const drawing1 = new Image();
-    //         drawing1.src = dataUrl1;
-    //         const drawing2 = new Image();
-    //         drawing2.src = dataUrl2;
+        //         // Create image objects
+        //         const drawing1 = new Image();
+        //         drawing1.src = dataUrl1;
+        //         const drawing2 = new Image();
+        //         drawing2.src = dataUrl2;
 
-    //         // Wait for both images to load before drawing
-    //         let imagesLoaded = 0;
-    //         function checkImagesLoaded() {
-    //             imagesLoaded++;
-    //             if (imagesLoaded === 2) {
-    //                 // Set canvas size to match the first image (or adjust as needed)
-    //                 canvas.width = window.innerWidth;
-    //                 canvas.height = window.innerHeight;
+        //         // Wait for both images to load before drawing
+        //         let imagesLoaded = 0;
+        //         function checkImagesLoaded() {
+        //             imagesLoaded++;
+        //             if (imagesLoaded === 2) {
+        //                 // Set canvas size to match the first image (or adjust as needed)
+        //                 canvas.width = window.innerWidth;
+        //                 canvas.height = window.innerHeight;
 
-    //                 // Draw both images onto the canvas
-    //                 context.drawImage(drawing1, 0, 0);
-    //                 context.drawImage(drawing2, 0, 0);
+        //                 // Draw both images onto the canvas
+        //                 context.drawImage(drawing1, 0, 0);
+        //                 context.drawImage(drawing2, 0, 0);
 
-    //                 // Automatically download the merged image
-    //                 const mergedImage = canvas.toDataURL("image/png");
-    //                 const link = document.createElement('a');
-    //                 link.href = mergedImage;
-    //                 link.download = 'merged-image.png';
-    //                 link.click();
-    //             }
-    //         }
+        //                 // Automatically download the merged image
+        //                 const mergedImage = canvas.toDataURL("image/png");
+        //                 const link = document.createElement('a');
+        //                 link.href = mergedImage;
+        //                 link.download = 'merged-image.png';
+        //                 link.click();
+        //             }
+        //         }
 
-    //         // Load event listeners for both images
-    //         drawing1.onload = checkImagesLoaded;
-    //         drawing2.onload = checkImagesLoaded;
-    //     }
-    // </script>
+        //         // Load event listeners for both images
+        //         drawing1.onload = checkImagesLoaded;
+        //         drawing2.onload = checkImagesLoaded;
+        //     }
+        // </script>
 
 
     <!-- External Scripts -->

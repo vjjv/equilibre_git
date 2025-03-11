@@ -1,9 +1,7 @@
 window.STATE = "INTRO";
 
 let captureButton = document.getElementById('captureButton');
-document.addEventListener('touchstart', startFilter, false);
-document.addEventListener('click', startFilter, false);
-document.addEventListener('touchstart', loadScript, { once: true });
+
 
 
 // captureButton.addEventListener("pointerdown", (e) => {
@@ -13,6 +11,36 @@ document.addEventListener('touchstart', loadScript, { once: true });
 // if(window.isRecording) startFilter();
 // }, 1500); // Hold for 500ms to start video recording
 // });
+
+document.getElementById('popup-btn').addEventListener('click', async () => {
+  // Check if the DeviceMotionEvent.requestPermission API exists
+  if (typeof DeviceMotionEvent.requestPermission === 'function') {
+    try {
+      // Request permission
+      const permissionState = await DeviceMotionEvent.requestPermission();
+      if (permissionState === 'granted') {
+        console.log('Device motion access granted!');
+        // Add event listener for device motion
+        document.getElementById('popup-bg').style.display = 'none';
+        window.addEventListener('devicemotion', (event) => {
+          console.log('Acceleration:', event.acceleration);
+          console.log('Rotation rate:', event.rotationRate);
+        });
+
+        document.addEventListener('touchstart', startFilter, false);
+        document.addEventListener('click', startFilter, false);
+      } else {
+        console.warn('Device motion access denied.');
+      }
+    } catch (error) {
+      console.error('Error requesting device motion permission:', error);
+      document.getElementById('popup-bg').style.display = 'none';
+    }
+  } else {
+    console.log('DeviceMotionEvent.requestPermission is not supported on this device.');
+    document.getElementById('popup-bg').style.display = 'none';
+  }
+});
 
 
 document.getElementsByClassName('skys')[Math.floor(Math.random() * 3)].setAttribute('visible', true)
@@ -65,11 +93,11 @@ function show(el, visible) {
 
 
 
-function loadScript() {
-  const script = document.createElement('script');
-  script.src = "script/resizeSvg.js";
-  document.body.appendChild(script);
-}
+// function loadScript() {
+//   const script = document.createElement('script');
+//   script.src = "script/resizeSvg.js";
+//   document.body.appendChild(script);
+// }
 
 async function captureFullPage() {
   try {

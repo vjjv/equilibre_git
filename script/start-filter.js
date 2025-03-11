@@ -44,6 +44,11 @@ document.getElementById('popup-btn').addEventListener('click', async () => {
         document.getElementById('popup-bg').style.display = 'none';
         document.addEventListener('touchstart', startFilter, true);
         document.addEventListener('click', startFilter, true);
+        const scene = document.querySelector('a-scene');
+        const cameraFeedEntity = document.createElement('a-entity');
+        cameraFeedEntity.setAttribute('camera-feed', '');
+        scene.appendChild(cameraFeedEntity);
+        
       } else {
         console.warn('Device motion access denied.');
       }
@@ -58,18 +63,22 @@ document.getElementById('popup-btn').addEventListener('click', async () => {
     document.getElementById('popup-bg').style.display = 'none';
     document.addEventListener('touchstart', startFilter, true);
     document.addEventListener('click', startFilter, true);
-    navigator.mediaDevices.getUserMedia({
-      video: {
-        facingMode: 'environment'
-      },
-      audio: false
-    })
-      .then(function (stream) {
-        window.stream = stream;
-      })
-      .catch(function (err) {
-        console.error('Error accessing camera:', err);
-      });
+    const scene = document.querySelector('a-scene');
+    const cameraFeedEntity = document.createElement('a-entity');
+    cameraFeedEntity.setAttribute('camera-feed', '');
+    scene.appendChild(cameraFeedEntity);
+    // navigator.mediaDevices.getUserMedia({
+    //   video: {
+    //     facingMode: 'environment'
+    //   },
+    //   audio: false
+    // })
+    //   .then(function (stream) {
+    //     window.stream = stream;
+    //   })
+    //   .catch(function (err) {
+    //     console.error('Error accessing camera:', err);
+    //   });
   }
 });
 

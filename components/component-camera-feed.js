@@ -35,7 +35,8 @@ AFRAME.registerComponent('camera-feed', {
         // video.style.display = 'none';
 
 
-        document.body.appendChild(video);
+        // document.body.appendChild(video);
+        document.getElementById('ortho').appendChild(video);
 
         navigator.mediaDevices.getUserMedia({
             video: {

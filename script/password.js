@@ -29,12 +29,13 @@ input.style.cssText = `
 
 const button = document.createElement('button');
 button.id = 'submit';
-button.textContent = 'Start';
+button.textContent = 'START';
 button.style.cssText = `
     padding: 10px 20px;
     font-size: 16px;
     margin-top: 10px;
     cursor: pointer;
+    font-weight:bold;
 `;
 
 // Append elements

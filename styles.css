@@ -127,11 +127,12 @@ a{
 }
 
 #INTRO{
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 #GAME{
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 #OUTRO{
-    pointer-events: auto;
+    z-index: 5;
+    /* pointer-events: auto; */
 }

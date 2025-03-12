@@ -92,6 +92,9 @@ AFRAME.registerComponent('forward-vector', {
       this.lookUpDown();
       this.gradientArrow(angle);
     }
+    if (window.STATE == 'SHARE') {
+      this.lookUpDown();
+    }
   },
 
 
@@ -163,13 +166,15 @@ AFRAME.registerComponent('forward-vector', {
     this.show('INTRO', false)
     this.show('GAME', false)
     this.show('OUTRO', true)
-
+    
     document.getElementById('cta').addEventListener('click', () => {
+      window.STATE = "SHARE";
       this.show('OUTRO', false);
       this.show('INTRO', false);
       this.show('GAME', false);
       this.show('SHARE', true);
       document.getElementById('container-record').style.opacity = 1;
+      document.getElementById('container-record').style.zIndex = 10;
       document.getElementById('video-camera-feed').classList.remove('hidden');//baba
     })
   }

@@ -4,6 +4,9 @@ AFRAME.registerComponent('forward-vector', {
   },
 
   init: function () {
+    //temps
+
+
     window.isDown = false;
     this.forwardVector = new THREE.Vector3();
     this.upVector = new THREE.Vector3();
@@ -153,6 +156,17 @@ AFRAME.registerComponent('forward-vector', {
     this.show('INTRO', false)
     this.show('GAME', false)
     this.show('OUTRO', true)
+    document.getElementById('cta').addEventListener('click', () => {
+      this.show('OUTRO', false);
+    })
+    if (document.getElementById('container-record')) document.getElementById('container-record').style.opacity = 1;
+    document.getElementById('cta').addEventListener('click', () => {
+      this.show('OUTRO', false);
+      this.show('INTRO', false);
+      this.show('GAME', false);
+      this.show('SHARE', true);
+      document.getElementById('container-record').style.opacity = 1;
+    })
   }
 
 

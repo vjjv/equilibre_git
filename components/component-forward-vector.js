@@ -4,7 +4,14 @@ AFRAME.registerComponent('forward-vector', {
   },
 
   init: function () {
-    //temps
+    // //temp
+    // document.getElementById('cta').addEventListener('click', () => {
+    //   this.show('OUTRO', false);
+    //   this.show('INTRO', false);
+    //   this.show('GAME', false);
+    //   this.show('SHARE', true);
+    //   document.getElementById('container-record').style.opacity = 1;
+    // })
 
 
     window.isDown = false;
@@ -156,10 +163,7 @@ AFRAME.registerComponent('forward-vector', {
     this.show('INTRO', false)
     this.show('GAME', false)
     this.show('OUTRO', true)
-    document.getElementById('cta').addEventListener('click', () => {
-      this.show('OUTRO', false);
-    })
-    if (document.getElementById('container-record')) document.getElementById('container-record').style.opacity = 1;
+
     document.getElementById('cta').addEventListener('click', () => {
       this.show('OUTRO', false);
       this.show('INTRO', false);

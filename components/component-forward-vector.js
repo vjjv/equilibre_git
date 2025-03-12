@@ -170,6 +170,7 @@ AFRAME.registerComponent('forward-vector', {
       this.show('GAME', false);
       this.show('SHARE', true);
       document.getElementById('container-record').style.opacity = 1;
+      document.getElementById('video-camera-feed').classList.remove('hidden');//baba
     })
   }
 

@@ -97,18 +97,29 @@
     width: 100%;
 }
 
-#popup-btn {
-    position: absolute;
-    top: 66%;
+.button{
     border-radius: 3px;
     background-color: #818181;
-    width: 25%;
+    width: 50%;
     height: 20%;
     color: white;
     font-size: 3vw;
     border-color: #818181;
     padding: 0;
     border: none;
+}
+#popup-btn {
+    position: absolute;
+    top: 66%;
+    /* border-radius: 3px; */
+    /* background-color: #818181; */
+    width: 25%;
+    height: 20%;
+    /* color: white; */
+    /* font-size: 3vw; */
+    /* border-color: #818181; */
+    /* padding: 0; */
+    /* border: none; */
 }
 #policy{
     width: 50%;
@@ -124,16 +135,18 @@
 }
 #cta{
     width: 45%;
+    height: 25px;
     position: absolute;
     bottom:15%;
-    background-color: #a0a0a07d;
+    padding: 10px;
+    /* background-color: #a0a0a07d; */
     border-radius: 8px;
     text-align: center;
-    color: white;
-    border-color: white;
-    border : 2px solid;
-    padding: 10px;
-    font-weight: bold;
+    /* color: white; */
+    /* border-color: white; */
+    /* border : 2px solid;/ */
+    /* padding: 10px; */
+    /* font-weight: bold; */
 }
 #share-title{
     /* width: 100%; */
@@ -151,6 +164,26 @@
 }
 a{
     color: white;
+}
+
+#video-camera-feed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+    opacity: 0.9;
+    pointer-events: none;
+    -webkit-mask-image: url(assets/mask.png);
+    mask-image: url(assets/mask.png);
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
 }
 
 #INTRO{

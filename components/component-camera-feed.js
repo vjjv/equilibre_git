@@ -32,7 +32,7 @@ AFRAME.registerComponent('camera-feed', {
         video.style.webkitMaskPosition = 'center';
         video.style.maskPosition = 'center';
         video.classList.add('hidden');
-        video.style.display = 'none';
+        // video.style.display = 'none';
 
 
         document.body.appendChild(video);

@@ -38,6 +38,7 @@
     height: 100%;
     width: 100%;
     max-width: 720px;
+    pointer-events: none;
   }
   
   @media screen and (max-width: 380px) {
@@ -62,6 +63,7 @@
     -webkit-user-select: none;
     user-select: none;
     z-index: 1;
+    pointer-events: none;
   }
   
   /* Canvas styling */
@@ -135,6 +137,7 @@
     z-index: 999;
     position: relative;
     height: 13%;
+    pointer-events: auto;
   }
   
   /* Capture button */
@@ -157,6 +160,7 @@
     user-select: none;
     -webkit-user-select: none;
     --webkit-tap-highlight-color: transparent;
+    pointer-events: auto;
   }
   
   /* SVG styling */

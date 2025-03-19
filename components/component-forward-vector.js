@@ -35,7 +35,7 @@ AFRAME.registerComponent('forward-vector', {
     this.camera = this.data.cameraSelector.object3D;
     
     //TO DO REMOVE
-    this.gameover();
+    // this.gameover();
   },
 
   tick: function () {

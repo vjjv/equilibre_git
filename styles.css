@@ -22,6 +22,7 @@
     justify-content: center;
     /* height: 100%; */
     /* width: 100%; */
+    flex-direction: column;
 }
 
 .screens {
@@ -98,7 +99,7 @@
 }
 
 .button{
-    border-radius: 3px;
+    border-radius: 5px;
     background-color: #818181;
     width: 50%;
     height: 20%;
@@ -107,6 +108,7 @@
     border-color: #818181;
     padding: 0;
     border: none;
+    padding: 0.6rem
 }
 #popup-btn {
     position: absolute;
@@ -134,14 +136,14 @@
     padding: 10px;
 }
 #cta{
-    width: 45%;
+    /* width: 45%;
     height: 25px;
     position: absolute;
     bottom:15%;
-    padding: 10px;
+    padding: 10px; */
     /* background-color: #a0a0a07d; */
-    border-radius: 8px;
-    text-align: center;
+    /* border-radius: 8px;
+    text-align: center; */
     /* color: white; */
     /* border-color: white; */
     /* border : 2px solid;/ */
@@ -195,4 +197,8 @@ a{
 #OUTRO{
     z-index: 5;
     /* pointer-events: auto; */
+}
+#gameover-buttons{
+    position: absolute;
+    bottom: 30%;
 }

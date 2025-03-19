@@ -169,18 +169,38 @@ AFRAME.registerComponent('forward-vector', {
     this.show('INTRO', false)
     this.show('GAME', false)
     this.show('OUTRO', true)
+    this,show('screen_iwalked', false);
+    this,show('screen_gameover', true);
+    this,show('cta', true);
+    this.show('learn', true);
+    // this.show('canvas-part', false) //TODO find another solution as the svg cannot be hidden, only opacity but then zone not clickable, why ?
+    // this.show('container-record', false)
+    document.getElementById('container-record').style.opacity = 0;
     
     document.getElementById('cta').addEventListener('click', () => {
       console.log('cta clicked')
       window.STATE = "SHARE";
-      this.show('OUTRO', false);
+      // this.show('OUTRO', false);
       this.show('INTRO', false);
       this.show('GAME', false);
       this.show('SHARE', true);
+      this,show('screen_gameover', false);
+      this,show('screen_iwalked', true);
+      this,show('cta', false);
+      this.show('learn', false);
+      // this.show('canvas-part', true)
+      // this.show('container-record', true)
       document.getElementById('container-record').style.opacity = 1;
-      document.getElementById('container-record').style.zIndex = 10;
-      document.getElementById('video-camera-feed').classList.remove('hidden');//baba
+      document.getElementById('container-record').style.zIndex = 6;
+      // this.show('video-camera-feed', false)
+      // document.getElementById('video-camera-feed').classList.remove('hidden');//baba
     })
+
+    window.addEventListener('backTapped', (e) => {
+        console.log('backTapped:', e.detail);
+        this.gameover();
+      // Output: { message: "Hello from Script 1", timestamp: 1648228834567 }
+    });
   }
 
 

@@ -11,6 +11,8 @@
     <!-- <script src="script/aframe-html-shader-baba.js"></script> -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="record-style.css" />
+    <script data-goatcounter="https://filtre-experience.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
 </head>
 
@@ -48,14 +50,19 @@
         </div>
 
 
-        <div id="OUTRO" class="flex hidden">
+        <div id="OUTRO" class="flex ">
             <img id="screen_gameover" class="screens gameover" src="assets/text_gameover.png" alt="">
+            <img id="screen_iwalked" class="screens gameover hidden" src="assets/text_iwalked.png" alt="">
             <span id="steps-outro" class="steps">0 STEPS</span>
-            <div id="policy" class="hidden">Learn more about FA on <a href="biogenlinc.com/thinkFA">biogenlinc.com/thinkFA</a></div>
-            <div id="cta" class="button">CLICK TO SHARE YOUR EXPERIENCE</div>
+            <div id="gameover-buttons">
+                <span id="cta" class="button">SHARE YOUR EXPERIENCE</span>
+                <span id="learn" class="button"><a href="https://biogenlinc.com/thinkFA">LEARN MORE ABOUT FA</a></span>
+            </div>
+            <div id="policy" class="hidden">Learn more about FA on <a target="_blank" href="https://myfajourney.eu/en/">biogenlinc.com/thinkFA</a></div>
+            <!-- <div id="cta" class="button">CLICK TO SHARE YOUR EXPERIENCE</div> -->
         </div>
         <div id="SHARE" class="flex hidden">
-            <div id="share-title"><b>THIS IS WHAT IS FEELS LIKE TO HAVE FREIDREICH ATAXIA</b></div>
+            <!-- <div id="share-title"><b>THIS IS WHAT IS FEELS LIKE TO HAVE FREIDREICH ATAXIA</b></div> -->
         </div>
 
         <img id="mention" src="assets/text_mentions.png" alt="">
@@ -155,7 +162,7 @@
         </section>
 
         <!-- Capture Section -->
-        <section class="canvas-part">
+        <section id="canvas-part" class="canvas-part">
             <!-- Progress Bar -->
             <div class="progress-bar" id="progressBar"></div>
             <!-- Canvas -->

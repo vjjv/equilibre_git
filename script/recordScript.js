@@ -685,7 +685,15 @@ window.addEventListener('load', function () {
     }
 
     // Back Button Handling
-    backButton.addEventListener("click", () => {
+    const eventData = { message: "back button tapped send to other script", timestamp: Date.now() };
+    backButton.addEventListener("click", () => { //baba
+      const customEvent = new CustomEvent('backTapped', {
+        detail: eventData,
+        bubbles: true, // Optional: allows event to bubble up the DOM
+        composed: true // Optional: crosses shadow DOM boundaries
+      });
+      
+      window.dispatchEvent(customEvent);
       showDomCapture(true);//baba
       previewPart.style.scale = 1.3;
       previewPart.style.display = "none";

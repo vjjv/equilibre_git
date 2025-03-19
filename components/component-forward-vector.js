@@ -13,26 +13,29 @@ AFRAME.registerComponent('forward-vector', {
     //   document.getElementById('container-record').style.opacity = 1;
     // })
 
-
+    
     window.isDown = false;
     this.forwardVector = new THREE.Vector3();
     this.upVector = new THREE.Vector3();
     this.rightVector = new THREE.Vector3();
     this.worldUp = new THREE.Vector3(0, 1, 0);
-
+    
     this.cameraForwardVector = new THREE.Vector3();
     this.cameraUpVector = new THREE.Vector3();
     this.cameraRightVector = new THREE.Vector3();
-
+    
     this.dirVecEl = document.getElementById('dirVec');
     this.dirVecCamEl = document.getElementById('dirVecCam');
     this.upVecEl = document.getElementById('upVec');
     this.upVecCamEl = document.getElementById('upVecCam');
-
+    
     this.fleche_orange_l = document.getElementById('fleche_orange_l');
     this.fleche_orange_r = document.getElementById('fleche_orange_r');
-
+    
     this.camera = this.data.cameraSelector.object3D;
+    
+    //TO DO REMOVE
+    this.gameover();
   },
 
   tick: function () {

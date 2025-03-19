@@ -45,8 +45,10 @@ document.getElementById('popup-btn').addEventListener('click', async () => {
   } else { //Desktop
     console.log('DeviceMotionEvent.requestPermission is not supported on this device.');
     document.getElementById('popup-bg').style.display = 'none';
-    document.addEventListener('touchstart', startFilter, true);
-    document.addEventListener('click', startFilter, true);
+    // document.addEventListener('touchstart', startFilter, true);
+    
+    // document.addEventListener('click', startFilter, true);
+    document.addEventListener('click', startFilter, { capture: true, once: true });
     const scene = document.querySelector('a-scene');
     const cameraFeedEntity = document.createElement('a-entity');
     cameraFeedEntity.setAttribute('camera-feed', '');

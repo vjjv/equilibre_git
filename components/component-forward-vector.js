@@ -168,6 +168,7 @@ AFRAME.registerComponent('forward-vector', {
     this.show('OUTRO', true)
     
     document.getElementById('cta').addEventListener('click', () => {
+      console.log('cta clicked')
       window.STATE = "SHARE";
       this.show('OUTRO', false);
       this.show('INTRO', false);

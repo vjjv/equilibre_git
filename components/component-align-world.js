@@ -24,12 +24,12 @@ AFRAME.registerComponent('align-world', {
   },
 
   onTap: function (event) {
-    console.log('align world ONTAPPPP' + window.filterStarted);
+    console.log('align world ONTAP' + window.filterStarted);
     
     if (window.filterStarted && !this.isPlaced) {
 
       this.isPlaced = true;
-      event.preventDefault();
+      // event.preventDefault();
 
       // Get the camera's world quaternion
       this.camera.object3D.getWorldQuaternion(this.cameraQuaternion);
@@ -41,6 +41,8 @@ AFRAME.registerComponent('align-world', {
       this.world.object3D.quaternion.copy(this.targetQuaternion);
 
       console.log('Aligned world Y rotation to:', THREE.MathUtils.radToDeg(this.getYRotation(this.targetQuaternion)).toFixed(2) + '°');
+
+      this.remove();
     }
   },
 

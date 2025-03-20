@@ -35,6 +35,7 @@ AFRAME.registerComponent('forward-vector', {
     this.camera = this.data.cameraSelector.object3D;
     
     //TO DO REMOVE
+    setTimeout(()=> this.gameover(),5000);
     // this.gameover();
   },
 
@@ -95,7 +96,7 @@ AFRAME.registerComponent('forward-vector', {
       this.lookUpDown();
       this.gradientArrow(angle);
     }
-    if (window.STATE == 'SHARE') {
+    if (window.STATE == 'SHARE' || window.STATE == 'OUTRO') {
       this.lookUpDown();
     }
   },
@@ -165,7 +166,6 @@ AFRAME.registerComponent('forward-vector', {
   gameover: function () {
     document.getElementById('steps-outro').textContent = '' + step + ' STEPS';
     window.STATE = "OUTRO";
-    this.show('video-camera-feed', false)
     this.show('INTRO', false)
     this.show('GAME', false)
     this.show('OUTRO', true)
@@ -173,14 +173,11 @@ AFRAME.registerComponent('forward-vector', {
     this,show('screen_gameover', true);
     this,show('cta', true);
     this.show('learn', true);
-    // this.show('canvas-part', false) //TODO find another solution as the svg cannot be hidden, only opacity but then zone not clickable, why ?
-    // this.show('container-record', false)
-    document.getElementById('container-record').style.opacity = 0;
+    this.show('canvasTemp',false);
     
     document.getElementById('cta').addEventListener('click', () => {
       console.log('cta clicked')
       window.STATE = "SHARE";
-      // this.show('OUTRO', false);
       this.show('INTRO', false);
       this.show('GAME', false);
       this.show('SHARE', true);
@@ -188,18 +185,14 @@ AFRAME.registerComponent('forward-vector', {
       this,show('screen_iwalked', true);
       this,show('cta', false);
       this.show('learn', false);
-      // this.show('canvas-part', true)
-      // this.show('container-record', true)
+      // this.show('canvasTemp',true);
       document.getElementById('container-record').style.opacity = 1;
-      document.getElementById('container-record').style.zIndex = 6;
-      // this.show('video-camera-feed', false)
-      // document.getElementById('video-camera-feed').classList.remove('hidden');//baba
+      document.getElementById('container-record').style.zIndex = 10;
     })
 
     window.addEventListener('backTapped', (e) => {
         console.log('backTapped:', e.detail);
         this.gameover();
-      // Output: { message: "Hello from Script 1", timestamp: 1648228834567 }
     });
   }
 
@@ -207,6 +200,3 @@ AFRAME.registerComponent('forward-vector', {
 });
 
 
-//TODO 
-
-// if > 5 pas, game over

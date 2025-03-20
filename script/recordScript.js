@@ -601,6 +601,7 @@ window.addEventListener('load', function () {
     async function capturePhoto() {
       const img = document.getElementById("preview-img");
       // const image = canvas.toDataURL("image/png");
+      const canvasTempReturn = await startCanvasTempCapture();
       const image = await captureAll();
       showDomCapture(false);
       img.src = image;
@@ -621,7 +622,7 @@ window.addEventListener('load', function () {
     }
     function showDomCapture(visible) {
       document.getElementById('ortho').style.display = visible ? 'flex' : 'none';
-      document.getElementById('video-camera-feed').style.display = visible ? 'block': 'none';
+      document.getElementById('video-camera-feed').style.display = visible ? 'block' : 'none';
     }
 
 
@@ -636,12 +637,68 @@ window.addEventListener('load', function () {
         width: window.innerWidth,
         height: window.innerHeight,
         backgroundColor: null,
-        scale: 1
+        scale: 1,
+        allowTaint: true,
+        useCORS: true,
+        logging: true
       });
 
       // Wait for the merged image and return it
       return await mergeImages(canvasGL.toDataURL(), canvasDom.toDataURL());
     }
+
+    let videoTemp = document.getElementById('video-camera-feed');
+
+    function startCanvasTempCapture() { //baba
+      return new Promise((resolve, reject) => {
+        console.log('videoTemp loaded ' + videoTemp.videoWidth);
+        // let canvasTemp = document.createElement('canvas');
+        let canvasTemp = document.getElementById('canvasTemp');
+        canvasTemp.classList.remove('hidden');
+        canvasTemp.style.zIndex = 1;
+        canvasTemp.style.width = "100%";
+        canvasTemp.style.height = "100%";
+        canvasTemp.style.opacity = 1;
+        canvasTemp.style.display = 'block';
+        canvasTemp.style.position = 'absolute';
+        canvasTemp.style.top = '0';
+        canvasTemp.width = videoTemp.videoWidth;
+        canvasTemp.height = videoTemp.videoHeight;
+        let ctxTemp = canvasTemp.getContext('2d');
+
+        // Create an Image object for the mask
+        let mask = new Image();
+        mask.src = 'assets/mask.png';
+        mask.onload = () => {
+          try {
+            // Draw the video frame
+            ctxTemp.drawImage(videoTemp, 0, 0, canvasTemp.width, canvasTemp.height);
+
+            // Apply the mask
+            ctxTemp.globalCompositeOperation = 'destination-in';
+            ctxTemp.drawImage(mask, 0, 0, canvasTemp.width, canvasTemp.height);
+
+            // Reset composite operation
+            ctxTemp.globalCompositeOperation = 'source-over';
+
+            // Set the canvas as the background of the video
+            videoTemp.style.backgroundImage = `url(${canvasTemp.toDataURL('image/png')})`;
+
+            // Append the canvas to the DOM
+            document.getElementById('ortho').appendChild(canvasTemp);
+
+            resolve(canvasTemp); // Resolve the promise with the canvas
+          } catch (error) {
+            reject(error); // Reject the promise if there's an error
+          }
+        };
+
+        mask.onerror = (error) => {
+          reject(new Error('Failed to load mask image')); // Reject if mask fails to load
+        };
+      });
+    }
+
 
 
     // Helper function to download the image
@@ -692,7 +749,7 @@ window.addEventListener('load', function () {
         bubbles: true, // Optional: allows event to bubble up the DOM
         composed: true // Optional: crosses shadow DOM boundaries
       });
-      
+
       window.dispatchEvent(customEvent);
       showDomCapture(true);//baba
       previewPart.style.scale = 1.3;

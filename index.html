@@ -11,13 +11,12 @@
     <!-- <script src="script/aframe-html-shader-baba.js"></script> -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="record-style.css" />
-    <script data-goatcounter="https://biogen.goatcounter.com/count"
-    async src="//gc.zgo.at/count.js"></script>
+    <script data-goatcounter="https://biogen.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
-    
+
     <!-- <script src="script/password.js"></script> -->
 
 
@@ -29,6 +28,7 @@
     </div>
 
     <div id="ortho" class="ortho">
+
 
 
         <div id="INTRO" class="flex ">
@@ -92,6 +92,95 @@
     </div>
 
 
+    <!-- VIDEO FEED -->
+    <video id="video-camera-feed" src="" autoplay muted loop playsinline></video>
+    <canvas id="canvasTemp"></canvas>
+    <!-- <video id="red-test" src="assets/safety.mov" autoplay muted loop playsinline></video> -->
+    <!-- <video id="video-camera-feed" src="" autoplay muted playsinline></video> -->
+    <style>
+        #red-test {
+            background-color: red;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        #video-camera-feed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 2;
+            opacity: 0.9;
+            pointer-events: none;
+            -webkit-mask-image: url(assets/mask.png);
+            mask-image: url(assets/mask.png);
+            -webkit-mask-size: cover;
+            mask-size: cover;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
+        }
+
+        video.hidden {
+            display: none;
+        }
+    </style>
+    <script>
+
+
+
+        // let videoTemp = document.getElementById('video-camera-feed');
+        // function startCanvasTempCapture(){
+        //     console.log('videoTemp loaded ' + videoTemp.videoWidth);
+        //         let canvasTemp = document.createElement('canvas');
+        //         canvasTemp.style.zIndex = 1;
+        //         canvasTemp.style.width = "100%";
+        //         canvasTemp.style.height = "100%";
+        //         canvasTemp.style.opacity = 1;
+        //         canvasTemp.style.display = 'block';
+        //         canvasTemp.style.position = 'absolute';
+        //         canvasTemp.style.top = '0';
+        //         canvasTemp.width = videoTemp.videoWidth;
+        //         canvasTemp.height = videoTemp.videoHeight;
+        //         let ctxTemp = canvasTemp.getContext('2d');
+
+        //         // Create an Image object for the mask
+        //         let mask = new Image();
+        //         mask.src = 'assets/mask.png';
+        //         mask.onload = () => {
+        //             // Draw the video frame
+        //             ctxTemp.drawImage(videoTemp, 0, 0, canvasTemp.width, canvasTemp.height);
+
+        //             // Apply the mask
+        //             ctxTemp.globalCompositeOperation = 'destination-in';
+        //             ctxTemp.drawImage(mask, 0, 0, canvasTemp.width, canvasTemp.height);
+
+        //             // Reset composite operation
+        //             ctxTemp.globalCompositeOperation = 'source-over';
+
+        //             // Set the canvas as the background of the video
+        //             videoTemp.style.backgroundImage = `url(${canvasTemp.toDataURL('image/png')})`;
+
+        //             // Append the canvas to the DOM
+        //             document.getElementById('ortho').appendChild(canvasTemp);
+        //         };
+        // }
+        videoTemp.addEventListener('play', () => {
+            setTimeout(() => {
+                startCanvasTempCapture();
+            }, 1000);
+        });
+    </script>
 
 
 

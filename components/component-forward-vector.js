@@ -35,7 +35,7 @@ AFRAME.registerComponent('forward-vector', {
     this.camera = this.data.cameraSelector.object3D;
     
     //TO DO REMOVE
-    setTimeout(()=> this.gameover(),5000);
+    // setTimeout(()=> this.gameover(),5000);
     // this.gameover();
   },
 
@@ -185,7 +185,7 @@ AFRAME.registerComponent('forward-vector', {
       this,show('screen_iwalked', true);
       this,show('cta', false);
       this.show('learn', false);
-      // this.show('canvasTemp',true);
+      this.show('canvasTemp',true);
       document.getElementById('container-record').style.opacity = 1;
       document.getElementById('container-record').style.zIndex = 10;
     })

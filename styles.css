@@ -104,7 +104,7 @@
     width: 50%;
     height: 20%;
     color: white;
-    font-size: 3vw;
+    font-size: 2.7vw;
     border-color: #818181;
     padding: 0;
     border: none;
@@ -177,7 +177,7 @@ a{
     height: 100%;
     object-fit: cover;
     z-index: 2;
-    opacity: 0.9;
+    opacity: 1;
     pointer-events: none;
     -webkit-mask-image: url(assets/mask.png);
     mask-image: url(assets/mask.png);

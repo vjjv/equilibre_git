@@ -175,6 +175,7 @@ AFRAME.registerComponent('forward-vector', {
     this.show('learn', true);
     this.show('canvasTemp',false);
     document.getElementById('container-record').style.opacity = 0;
+    document.getElementById('OUTRO').style.marginTop = '0'
     
     document.getElementById('cta').addEventListener('click', () => {
       console.log('cta clicked')
@@ -189,6 +190,7 @@ AFRAME.registerComponent('forward-vector', {
       // this.show('canvasTemp',true);
       document.getElementById('container-record').style.opacity = 1;
       document.getElementById('container-record').style.zIndex = 10;
+      document.getElementById('OUTRO').style.marginTop = '-50vh'
     })
 
     window.addEventListener('backTapped', (e) => {

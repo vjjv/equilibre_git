@@ -201,7 +201,7 @@ a{
 }
 #gameover-buttons{
     position: absolute;
-    bottom: 30%;
+    bottom: 26%;
     width: 90vw;
     display: flex;
     text-align: center;

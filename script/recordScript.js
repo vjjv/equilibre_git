@@ -590,10 +590,10 @@ window.addEventListener('load', function () {
     function updateActionButtonLabel(mediaType) {
       if (!isMobile) {
         actionButton.innerHTML =
-          mediaType === "image" ? "Save Photo" : "Save Video";
+          mediaType === "image" ? "SAVE PHOTO" : "SAVE VIDEO";
       } else {
         actionButton.innerHTML =
-          mediaType === "image" ? "Share Photo" : "Share Video";
+          mediaType === "image" ? "SHARE PHOTO" : "SHARE VIDEO";
       }
     }
 

@@ -202,4 +202,12 @@ a{
 #gameover-buttons{
     position: absolute;
     bottom: 30%;
+    width: 90vw;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+#gameover-buttons div {
+    font-size: 2.4vw;
+    margin: 1vw;
 }

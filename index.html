@@ -8,9 +8,9 @@
     <script src="script/aframe-extra.min.js"></script>
     <script src="script/html2canvas.min.js"></script>
 
-    <!-- <script src="script/aframe-html-shader-baba.js"></script> -->
+
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="record-style.css" />
+
     <script data-goatcounter="https://biogen.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 </head>
@@ -67,23 +67,11 @@
 
         <img id="mention" src="assets/text_mentions.png" alt="">
         <div class="logs hidden">
-            <!-- <div>acc_x <span id="acc_x">0.00</span></div> -->
-            <!-- <div>acc_y <span id="acc_y">0.00</span></div> -->
-            <!-- <div>acc_z <span id="acc_z">0.00</span></div> -->
-            <!-- <br> -->
-            <!-- <div>agr_x <span id="agr_x">0.00</span></div> -->
-            <!-- <div>agr_y <span id="agr_y">0.00</span></div> -->
-            <!-- <div>agr_z <span id="agr_z">0.00</span></div> -->
-            <!-- <br> -->
+
             <div>rot_x <span id="rot_x">0.00</span></div>
             <div>rot_y <span id="rot_y">0.00</span></div>
             <div>rot_z <span id="rot_z">0.00</span></div>
-            <!-- <br> -->
-            <!-- <div>agrY0 <span id="agrY0">0.00</span></div> -->
-            <!-- <div>agrY1 <span id="agrY1">0.00</span></div> -->
-            <!-- <div>diff <span id="diff">0.00</span></div> -->
-            <!-- <div> <span id="dirVec"></span></div> -->
-            <!-- <div> <span id="upVec"></span></div> -->
+
             <div> <span id="dirVecCam"></span></div>
             <div> <span id="upVecCam"></span></div>
             <div> <span id="angleXZ"></span></div>
@@ -95,8 +83,7 @@
     <!-- VIDEO FEED -->
     <video id="video-camera-feed" src="" autoplay muted loop playsinline></video>
     <canvas id="canvasTemp"></canvas>
-    <!-- <video id="red-test" src="assets/safety.mov" autoplay muted loop playsinline></video> -->
-    <!-- <video id="video-camera-feed" src="" autoplay muted playsinline></video> -->
+
     <style>
         #red-test {
             background-color: red;
@@ -135,52 +122,7 @@
             display: none;
         }
     </style>
-    <script>
 
-
-
-        // let videoTemp = document.getElementById('video-camera-feed');
-        // function startCanvasTempCapture(){
-        //     console.log('videoTemp loaded ' + videoTemp.videoWidth);
-        //         let canvasTemp = document.createElement('canvas');
-        //         canvasTemp.style.zIndex = 1;
-        //         canvasTemp.style.width = "100%";
-        //         canvasTemp.style.height = "100%";
-        //         canvasTemp.style.opacity = 1;
-        //         canvasTemp.style.display = 'block';
-        //         canvasTemp.style.position = 'absolute';
-        //         canvasTemp.style.top = '0';
-        //         canvasTemp.width = videoTemp.videoWidth;
-        //         canvasTemp.height = videoTemp.videoHeight;
-        //         let ctxTemp = canvasTemp.getContext('2d');
-
-        //         // Create an Image object for the mask
-        //         let mask = new Image();
-        //         mask.src = 'assets/mask.png';
-        //         mask.onload = () => {
-        //             // Draw the video frame
-        //             ctxTemp.drawImage(videoTemp, 0, 0, canvasTemp.width, canvasTemp.height);
-
-        //             // Apply the mask
-        //             ctxTemp.globalCompositeOperation = 'destination-in';
-        //             ctxTemp.drawImage(mask, 0, 0, canvasTemp.width, canvasTemp.height);
-
-        //             // Reset composite operation
-        //             ctxTemp.globalCompositeOperation = 'source-over';
-
-        //             // Set the canvas as the background of the video
-        //             videoTemp.style.backgroundImage = `url(${canvasTemp.toDataURL('image/png')})`;
-
-        //             // Append the canvas to the DOM
-        //             document.getElementById('ortho').appendChild(canvasTemp);
-        //         };
-        // }
-        videoTemp.addEventListener('play', () => {
-            setTimeout(() => {
-                startCanvasTempCapture();
-            }, 1000);
-        });
-    </script>
 
 
 
@@ -272,66 +214,7 @@
     <!-- <button id="captureBtn" style="position: absolute;z-index: 3;top: 0;">Export as Image2</button> -->
 
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script>
 
-        //     // Enable the button after the scene is loaded
-        //     document.getElementById('captureBtn').addEventListener('click', captureAll);
-
-
-        //     async function captureAll() {
-        //         let screenshot = document.querySelector('a-scene').components.screenshot
-        //         screenshot.data.width = window.innerWidth;
-        //         screenshot.data.height = window.innerHeight;
-        //         let canvasGL = screenshot.getCanvas('perspective')
-        //         let canvasDom = await html2canvas(document.body, { width: 1201, height: 1192, backgroundColor: null, scale: 1 });
-        //         mergeImages(canvasGL.toDataURL(), canvasDom.toDataURL());
-        //     }
-
-        //     // Helper function to download the image
-        //     function downloadImage(dataUrl, fileName) {
-        //         const link = document.createElement("a");
-        //         link.href = dataUrl;
-        //         link.download = fileName;
-        //         link.click();
-        //     }
-        //     function mergeImages(dataUrl1, dataUrl2) {
-        //         // Create a canvas element dynamically
-        //         const canvas = document.createElement('canvas');
-        //         const context = canvas.getContext('2d');
-
-        //         // Create image objects
-        //         const drawing1 = new Image();
-        //         drawing1.src = dataUrl1;
-        //         const drawing2 = new Image();
-        //         drawing2.src = dataUrl2;
-
-        //         // Wait for both images to load before drawing
-        //         let imagesLoaded = 0;
-        //         function checkImagesLoaded() {
-        //             imagesLoaded++;
-        //             if (imagesLoaded === 2) {
-        //                 // Set canvas size to match the first image (or adjust as needed)
-        //                 canvas.width = window.innerWidth;
-        //                 canvas.height = window.innerHeight;
-
-        //                 // Draw both images onto the canvas
-        //                 context.drawImage(drawing1, 0, 0);
-        //                 context.drawImage(drawing2, 0, 0);
-
-        //                 // Automatically download the merged image
-        //                 const mergedImage = canvas.toDataURL("image/png");
-        //                 const link = document.createElement('a');
-        //                 link.href = mergedImage;
-        //                 link.download = 'merged-image.png';
-        //                 link.click();
-        //             }
-        //         }
-
-        //         // Load event listeners for both images
-        //         drawing1.onload = checkImagesLoaded;
-        //         drawing2.onload = checkImagesLoaded;
-        //     }
-        // </script>
 
 
     <!-- External Scripts -->

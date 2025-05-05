@@ -507,4 +507,13 @@ a{
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.3);
   }
+  #logo-biogen{
+    width: 45%;
+    position: absolute;
+    top: 0;
+    display: block;
+    z-index: 100;
+    max-width: 220px;
+    pointer-events: none;
+  }
   

@@ -593,7 +593,7 @@ window.addEventListener('load', function () {
           mediaType === "image" ? "SAVE PHOTO" : "SAVE VIDEO";
       } else {
         actionButton.innerHTML =
-          mediaType === "image" ? "SHARE PHOTO" : "SHARE VIDEO";
+          mediaType === "image" ? window.language == 'fr' ? "PARTAGER" : "SHARE PHOTO" : "SHARE VIDEO";
       }
     }
 

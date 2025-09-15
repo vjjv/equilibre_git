@@ -2,6 +2,30 @@ window.STATE = "INTRO";
 
 let captureButton = document.getElementById('captureButton');
 
+//LANGUAGE CHECK
+const params = new URLSearchParams(window.location.search);
+if (params.get('lg') === 'fr') {
+  console.log('LANGUAGE : FR');
+  
+  window.language = 'fr';
+  for (const e of document.getElementsByClassName('lg-en')) {
+    e.style.display = 'none';
+  };
+  for (const e of document.getElementsByClassName('lg-fr')) {
+    e.style.display = 'block';
+  };
+  
+}else{
+  console.log('LANGUAGE : EN');
+  window.language = 'en';
+    for (const e of document.getElementsByClassName('lg-en')) {
+    e.style.display = 'block';
+  }
+  for (const e of document.getElementsByClassName('lg-fr')) {
+    e.style.display = 'none';
+  };
+}
+
 
 window.filterStarted = false;
 

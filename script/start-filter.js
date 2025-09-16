@@ -4,7 +4,11 @@ let captureButton = document.getElementById('captureButton');
 
 //LANGUAGE CHECK
 const params = new URLSearchParams(window.location.search);
+if(params.get('code')){
+  console.log('LEGAL: '+params.get('code'));
+  document.getElementById('text-mentions').innerHTML = ''+(params.get('code'))
 
+}
 if (params.get('lg') === 'fr') {
   console.log('LANGUAGE : FR');
   

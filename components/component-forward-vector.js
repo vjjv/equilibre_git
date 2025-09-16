@@ -13,27 +13,37 @@ AFRAME.registerComponent('forward-vector', {
     //   document.getElementById('container-record').style.opacity = 1;
     // })
 
-    
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('limit')) {
+      console.log('LIMIT:'+params.get('limit'));
+      window.limit = params.get('limit');
+    }
+    else {
+      console.log('LIMIT: 5');
+      window.limit = 5;
+    }
+
+
     window.isDown = false;
     this.forwardVector = new THREE.Vector3();
     this.upVector = new THREE.Vector3();
     this.rightVector = new THREE.Vector3();
     this.worldUp = new THREE.Vector3(0, 1, 0);
-    
+
     this.cameraForwardVector = new THREE.Vector3();
     this.cameraUpVector = new THREE.Vector3();
     this.cameraRightVector = new THREE.Vector3();
-    
+
     this.dirVecEl = document.getElementById('dirVec');
     this.dirVecCamEl = document.getElementById('dirVecCam');
     this.upVecEl = document.getElementById('upVec');
     this.upVecCamEl = document.getElementById('upVecCam');
-    
+
     this.fleche_orange_l = document.getElementById('fleche_orange_l');
     this.fleche_orange_r = document.getElementById('fleche_orange_r');
-    
+
     this.camera = this.data.cameraSelector.object3D;
-    
+
     //TO DO REMOVE
     // setTimeout(()=> this.gameover(),5000);
     // this.gameover();
@@ -160,7 +170,8 @@ AFRAME.registerComponent('forward-vector', {
     //You missed
     if (window.isDown) this.show('screen_missed', (angle * 10 > 1.5 || angle * 10 <= -1.5))
     //After 5 steps, missed, gameover
-    if (window.step > 5 && (angle * 10 > 1.5 || angle * 10 <= -1.5)) this.gameover();
+
+    if (window.step > window.limit && (angle * 10 > 1.5 || angle * 10 <= -1.5)) this.gameover();
   },
 
   gameover: function () {
@@ -169,23 +180,23 @@ AFRAME.registerComponent('forward-vector', {
     this.show('INTRO', false)
     this.show('GAME', false)
     this.show('OUTRO', true)
-    this,show('screen_iwalked', false);
-    this,show('screen_gameover', true);
-    this,show('cta', true);
+    this, show('screen_iwalked', false);
+    this, show('screen_gameover', true);
+    this, show('cta', true);
     this.show('learn', true);
-    this.show('canvasTemp',false);
+    this.show('canvasTemp', false);
     document.getElementById('container-record').style.opacity = 0;
     document.getElementById('OUTRO').style.marginTop = '0'
-    
+
     document.getElementById('cta').addEventListener('click', () => {
       console.log('cta clicked')
       window.STATE = "SHARE";
       this.show('INTRO', false);
       this.show('GAME', false);
       this.show('SHARE', true);
-      this,show('screen_gameover', false);
-      this,show('screen_iwalked', true);
-      this,show('cta', false);
+      this, show('screen_gameover', false);
+      this, show('screen_iwalked', true);
+      this, show('cta', false);
       this.show('learn', false);
       // this.show('canvasTemp',true);
       document.getElementById('container-record').style.opacity = 1;
@@ -194,8 +205,8 @@ AFRAME.registerComponent('forward-vector', {
     })
 
     window.addEventListener('backTapped', (e) => {
-        console.log('backTapped:', e.detail);
-        this.gameover();
+      console.log('backTapped:', e.detail);
+      this.gameover();
     });
   }
 

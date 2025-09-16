@@ -4,6 +4,7 @@ let captureButton = document.getElementById('captureButton');
 
 //LANGUAGE CHECK
 const params = new URLSearchParams(window.location.search);
+
 if (params.get('lg') === 'fr') {
   console.log('LANGUAGE : FR');
   

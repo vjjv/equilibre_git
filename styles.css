@@ -27,7 +27,7 @@
 
 .screens {
     position: absolute;
-    height: 110%;
+    /* height: 110%; */
     width: 100%;
 
 }

@@ -129,7 +129,7 @@ AFRAME.registerComponent('forward-vector', {
 
   lookUpDown: function (treshold) {
     window.isDown = this.cameraUpVector.y < 0.70;
-    this.show(window.step < 5 ? 'screen_lookat' : 'screen_recenter', !window.isDown);
+    this.show(window.step < 3 ? 'screen_lookat' : 'screen_recenter', !window.isDown);
     this.show('fleche_green', window.isDown);
     this.show('fleche_orange_l', window.isDown);
     this.show('fleche_orange_r', window.isDown);

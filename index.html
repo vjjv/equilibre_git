@@ -47,10 +47,14 @@
 
 
         <div id="GAME" class="flex hidden">
-            <img id="screen_lookat" class="screens lookat hidden lg-en" src="assets/text_lookat.png" alt="">
-            <img id="screen_lookat" class="screens lookat hidden lg-fr" src="assets/text_lookat_fr.png" alt="">
-            <img id="screen_recenter" class="screens lookat hidden lg-en" src="assets/text_recenter.png" alt="">
-            <img id="screen_recenter" class="screens lookat hidden lg-fr" src="assets/text_recenter_fr.png" alt="">
+            <div id="screen_lookat"  class="screens lookat hidden">
+                <img style="width: 100%;" class="lg-en" src="assets/text_lookat.png" alt="">
+                <img style="width: 100%;" class="lg-fr" src="assets/text_lookat_fr.png" alt="">
+            </div>
+            <div id="screen_recenter"  class="screens lookat hidden">
+                <img style="width: 100%;" class="lg-en" src="assets/text_recenter.png" alt="">
+                <img style="width: 100%;" class="lg-fr" src="assets/text_recenter_fr.png" alt="">
+            </div>
             <div id="only-down" class="flex hidden">
                 <img id="screen_missed" class="screens missed hidden lg-en" src="assets/text_missed.png" alt="">
                 <img id="screen_missed" class="screens missed hidden lg-fr" src="assets/text_missed_fr.png" alt="">
@@ -88,7 +92,8 @@
             <!-- <div id="share-title"><b>THIS IS WHAT IS FEELS LIKE TO HAVE FREIDREICH ATAXIA</b></div> -->
         </div>
 
-        <img id="mention" src="assets/text_mentions.png" alt="">
+        <!-- <img id="mention" src="assets/text_mentions.png" alt=""> -->
+        <div id="text-mentions">⁠2025/09 - Biogen-269575</div>
         <div class="logs hidden">
 
             <div>rot_x <span id="rot_x">0.00</span></div>

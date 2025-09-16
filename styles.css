@@ -211,7 +211,12 @@ a{
     font-size: 2.4vw;
     margin: 1vw;
 }
-
+#text-mentions{
+  position: absolute;
+  bottom: 5px;
+  color: white;
+  font-size: 8px;
+}
 
 /* RECORD STYLES */
 /* CSS Variables for consistency */

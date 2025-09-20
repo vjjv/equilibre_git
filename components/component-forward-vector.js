@@ -175,7 +175,11 @@ AFRAME.registerComponent('forward-vector', {
   },
 
   gameover: function () {
-    document.getElementById('steps-outro').textContent = '' + step + ' STEPS';
+    if(window.language == 'fr'){
+      document.getElementById('steps-outro').textContent = '' + step + ' PAS';
+    }else{
+      document.getElementById('steps-outro').textContent = '' + step + ' STEPS';
+    }
     window.STATE = "OUTRO";
     this.show('INTRO', false)
     this.show('GAME', false)
